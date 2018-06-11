@@ -14,8 +14,9 @@ public class Main {
         arrayList.add(7);
 
         System.out.println("IntArrayList before sorting: " + arrayList.toString());
-    //    sort();
-        System.out.println("IntArrayList after sorting: " + arrayList.toString());
+        System.out.print("IntArrayList after sorting: ");
+        sort(arrayList);
+        System.out.println();
 
         linkedList.add(3);
         linkedList.add(0);
@@ -24,21 +25,26 @@ public class Main {
         linkedList.add(999);
 
         System.out.println("IntLinkedList before sorting: " + linkedList.toString());
-    //     sort();
-        System.out.println("IntLinkedList after sorting: " + linkedList.toString());
+        System.out.print("IntLinkedList after sorting: ");
+        sort(linkedList);
+        System.out.println();
     }
 
-    private static void sort(int[] arr) {
-        for (int i = 1; i < arr.length; i++) {
-            for (int j = i; j > 0 && arr[j - 1] > arr[j]; j--) {
-                swap(arr, j - 1, j);
+    private static void sort(IntList list) {
+        int[] arr = list.makeArrayFromIntList(list);
+        int tmp, j;
+        for (int i = 0; i < arr.length - 1; i++) {
+            if (arr[i] > arr[i + 1]) {
+                tmp = arr[i + 1];
+                arr[i + 1] = arr[i];
+                j = i;
+                while (j > 0 && tmp < arr[j - 1]) {
+                    arr[j] = arr[j - 1];
+                    j--;
+                }
+                arr[j] = tmp;
             }
         }
-    }
-
-    private static void swap(int[] arr, int a, int b) {
-        int tmp = arr[a];
-        arr[a] = arr[b];
-        arr[b] = tmp;
+        System.out.println(list.makeIntListFromArray(arr));
     }
 }

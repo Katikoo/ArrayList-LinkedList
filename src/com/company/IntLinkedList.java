@@ -198,6 +198,26 @@ public class IntLinkedList implements IntList {
     }
 
     @Override
+    public int[] makeArrayFromIntList(IntList list) {
+        int[] result = new int[list.size()];
+        Entry entry = first;
+        for (int i = 0; i < result.length; i++) {
+            result[i] = entry.item;
+            entry = entry.next;
+        }
+        return result;
+    }
+
+    @Override
+    public IntList makeIntListFromArray(int[] array) {
+        IntList result = new IntLinkedList();
+        for (int newArray : array) {
+            result.add(newArray);
+        }
+        return result;
+    }
+
+    @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("[");
