@@ -34,7 +34,7 @@ public class IntLinkedList implements IntList {
     }
 
     @Override
-    public void add(int element, int index) {
+    public void add(int index, int element) {
         check(index);
         Entry newEntry = new Entry(element);
         if (index == 0) {

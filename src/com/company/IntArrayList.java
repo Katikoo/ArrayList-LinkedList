@@ -4,6 +4,7 @@ public class IntArrayList implements IntList {
 
     private int arr[] = new int[10];
     private int size = 0;
+    private int resizeCounter;
 
     IntArrayList() {
     }
@@ -130,5 +131,10 @@ public class IntArrayList implements IntList {
         int[] newArr = new int[newSize];
         System.arraycopy(arr, 0, newArr, 0, arr.length);
         arr = newArr;
+        resizeCounter++;
+    }
+
+    int getResizeCounter() {
+        return resizeCounter;
     }
 }
